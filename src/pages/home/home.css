@@ -1,0 +1,28 @@
+
+.img-holder{
+    height: 60vh;
+    width: 100vw;
+    object-fit: contain;
+}
+
+.cat{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 1rem;
+    align-items: center;
+    gap: 1.8rem;
+}
+
+.cats{
+    border: 2px solid navy;
+    padding: 8px;
+    width: 5.5rem;
+    /* margin-top: 1rem; */
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.cats:hover{
+    box-shadow: .1rem .1rem .2rem .2rem darkblue;
+}

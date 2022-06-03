@@ -1,0 +1,61 @@
+.player{
+    height: 92.4vh;
+    width: 84vw;
+    /* background-color: aqua; */
+    box-sizing: border-box;
+    text-align: start;
+}
+
+.play{
+    width: 70%;
+    height: 70%;
+}
+
+.info{
+    box-sizing: border-box;
+    padding: .5rem;
+    width: 70%;
+}
+
+.btn-gap{
+    gap: 2rem;
+}
+
+.icon{
+    cursor: pointer;
+}
+
+.modals {
+    /* display: none; */
+    position: fixed; 
+    z-index: 1; 
+    padding-top: 10%; 
+    padding-left: 50%;
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height:100%; 
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5); 
+    opacity: 95%;
+    display: flex;
+    /* justify-content: center;
+    align-items: center; */
+  }
+
+  .contents{
+    border: 1px solid black;
+    background-color: white;
+    color: black;
+    width: max-content;
+    padding: 10px;
+    height: max-content;
+    gap: 5px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+  }
+
+  .map{
+      text-align: start;
+  }

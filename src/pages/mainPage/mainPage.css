@@ -1,0 +1,62 @@
+
+.sideBar{
+    width: 15vw;
+}
+
+.mainContent{
+    width: 81.4vw;
+}
+
+.card{
+    position: relative;
+    width: 18rem;
+    height: 16rem;
+    cursor: pointer;
+    box-shadow: 0 4px 8px 0 rgba(27, 43, 170, 0.2);
+}
+
+.thumbnail:hover{
+    filter: contrast(40%);
+}
+
+.thumbnail{
+    object-fit: contain;
+    width: 100%;
+    height: auto;
+}
+
+
+.data{
+    text-align: start;
+    width: 95%;
+    color: Black;
+}
+
+.view{
+    position: absolute;
+    bottom: 0;
+    margin:4px 0px
+}
+.creator{
+    background-color:rgb(210, 210, 248);
+    font-family: 'Times New Roman', Times, serif;
+    padding: 3px;
+    border-radius: 4px;
+}
+
+.items{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 5px;
+    gap: 1.5rem;
+}
+
+.searchbar{
+    padding: 8px;
+}
+
+.active, .cats:hover{
+    background-color: rgb(65, 104, 210);
+    color: white;
+}

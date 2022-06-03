@@ -1,0 +1,33 @@
+.sidebar{
+    /* background-color: rgb(182, 135, 135); */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 17rem;
+    margin-top: 2rem;
+    padding-left: 4px;
+    text-align: start;
+    text-decoration: none;
+    position: fixed;
+}
+
+.active{
+    color:white;
+    background-color: blue;
+    padding: 3px;
+    border-radius: 5px;
+    /* width: 10rem; */
+}
+
+.inactive{
+    color: blue;
+}
+
+a:-webkit-any-link {
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+.sidebarGap{
+    gap: 1.6rem;
+}
