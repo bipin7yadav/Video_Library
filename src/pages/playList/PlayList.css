@@ -1,5 +1,4 @@
 .modal {
-    /* display: none; */
     position: fixed; 
     z-index: 1; 
     padding-top: 10%; 
@@ -8,13 +7,11 @@
     top: 0;
     width: 100%; 
     height: 100%; 
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-    /* border: 1px solid black; */
+    overflow: auto; 
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.4);
     display: flex;
-    /* justify-content: center;
-    align-items: center; */
+
   }
 
   .P-card{
@@ -36,7 +33,7 @@
       color: black;
       width: max-content;
       padding: 10px;
-      height: 7rem;
+      height: 7.5rem;
       gap: 5px;
       display: flex;
       justify-content: space-between;
@@ -57,5 +54,16 @@
   .btns:hover{
       color: red;
   }
+
+  @media only screen and (max-width: 600px){
+    .P-card{
+        width: 25rem;
+    }
+
+    .modal{
+      padding-top: 40%;
+      padding-left: 28%;
+    }
+}
 
   

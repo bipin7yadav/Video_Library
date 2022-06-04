@@ -6,6 +6,7 @@ import NotFound from "./NotFound/NotFound";
 import PlayList from "./playList/PlayList";
 import WatchLater from "./watchLater/WatchLater";
 import LikedVideos from "./likedVideos/LikedVideos";
+import SinglePlayList from "./singlePlayList/SinglePlayList";
 
 
-export {Home,MainPage,ScreenPlay,History,NotFound,PlayList,WatchLater,LikedVideos}
+export {Home,MainPage,ScreenPlay,History,NotFound,PlayList,WatchLater,LikedVideos,SinglePlayList}
