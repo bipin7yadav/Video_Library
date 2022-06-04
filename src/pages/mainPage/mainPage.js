@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Sidebar } from '../../components';
 import { getPosts } from '../videoSlice/VideoSlice';
+import { addFilter, addSearch } from '../videoSlice/VideoSlice';
 import "../../global.css"
 import "./mainPage.css"
 
@@ -14,18 +15,30 @@ const MainPage = () => {
 
     const dispatch = useDispatch()
     const data = useSelector((state) => state.video.video)
+    const bysearch = useSelector((state) => state.video.search)
+    const byfilter = useSelector((state) => state.video.filter)
 
-    const load =useSelector((state)=>state.video.loading)
+    const load = useSelector((state) => state.video.loading)
 
-    
+    function play(a) {
+        dispatch(addSearch(""))
+    }
 
 
-    useEffect(()=>{
+    useEffect(() => {
         dispatch(getPosts())
-    },[])
+    }, [])
 
     function filteredVideo() {
         let videos = data
+
+        if (bysearch) {
+            videos = videos.filter((a) => a.title.toLowerCase().includes(bysearch))
+        }
+
+        if (byfilter) {
+            videos = videos.filter((a) => a.title.toLowerCase().includes(byfilter))
+        }
 
         return videos
     }
@@ -39,15 +52,15 @@ const MainPage = () => {
             </div>
             <div className='mainContent' >
                 <div className='align-center searchbar'>
-                    <input className='serchbarWidth'  placeholder='Search' />
+                    <input className='serchbarWidth' onChange={(e) => dispatch(addSearch(e.target.value))} placeholder='Search' />
                 </div>
                 <div className='align-center gap cat'>
-                    <span className='cats ' >All</span>
-                    <span className='cats' >Html</span>
-                    <span className='cats' >CSS</span>
-                    <span className='cats' >Javascript</span>
-                    <span className='cats' >React Js</span>
-                    <span className='cats' >Redux</span>
+                    <span className='cats ' onClick={() => dispatch(addFilter(""))}>All</span>
+                    <span className='cats' onClick={() => dispatch(addFilter("html"))}>Html</span>
+                    <span className='cats' onClick={() => dispatch(addFilter("css"))}>CSS</span>
+                    <span className='cats' onClick={() => dispatch(addFilter("javascript"))}>Javascript</span>
+                    <span className='cats' onClick={() => dispatch(addFilter("react"))}>React Js</span>
+                    <span className='cats' onClick={() => dispatch(addFilter("redux"))}>Redux</span>
                 </div>
                 <div className='items'>
 
@@ -60,7 +73,7 @@ const MainPage = () => {
                                         <Link style={{ textDecoration: "none" }} to={`/video/${a.src}`}>
                                             <div className='card' key={a.id}>
                                                 <div >
-                                                    <img  className='thumbnail' alt='thumbnail' src={`http://img.youtube.com/vi/${a.src}/mqdefault.jpg`} />
+                                                    <img className='thumbnail' alt='thumbnail' src={`http://img.youtube.com/vi/${a.src}/mqdefault.jpg`} />
                                                 </div>
                                                 <div className='flex-row'>
                                                     <div className='data'>

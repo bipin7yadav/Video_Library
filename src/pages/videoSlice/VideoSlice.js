@@ -23,9 +23,16 @@ export const videoSlice = createSlice({
         
         video: [],
         loading: false,
+        search:"",
+        filter:"",
     },
     reducers: {
-        
+        addSearch: (state, action) => {
+            state.search = action.payload
+        },
+        addFilter: (state, action) => {
+            state.filter = action.payload
+        },
 
     },
 
@@ -44,6 +51,6 @@ export const videoSlice = createSlice({
 })
 
 
-export const {  } = videoSlice.actions
+export const {addFilter, addSearch  } = videoSlice.actions
 
 export default videoSlice.reducer
