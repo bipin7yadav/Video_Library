@@ -38,9 +38,7 @@ const SinglePlayList = () => {
                                                     <div>{item.view} views</div>
                                                 </div>
                                             </div>
-                                            {/* <div className='date'>
-                                                <span class="material-icons">more_vert</span>
-                                            </div> */}
+                                
                                         </div>
                                     </div>
                                 </>
