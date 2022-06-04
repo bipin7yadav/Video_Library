@@ -60,3 +60,10 @@
     background-color: rgb(65, 104, 210);
     color: white;
 }
+
+@media only screen and (max-width: 600px){
+    .card{
+        width:23rem;
+        height:18rem;
+    }
+}

@@ -1,7 +1,7 @@
 import "./App.css";
 import { Header, Login, SignUP } from "./components/index"
 import { Routes, Route } from "react-router-dom"
-import { Home, MainPage, ScreenPlay, History, NotFound, PlayList, LikedVideos, WatchLater } from "./pages/index"
+import { Home, MainPage, ScreenPlay, History, NotFound, PlayList, LikedVideos, WatchLater , SinglePlayList } from "./pages/index"
 import RequireAuth from "./Authentication/requireAuth";
 import { ToastContainer } from 'react-toastify';
 
@@ -43,6 +43,11 @@ function App() {
         <Route path="/video/:videoId" element={
           <RequireAuth>
             <ScreenPlay />
+          </RequireAuth>
+        } />
+        <Route path="/playlist/:playlistId" element={
+          <RequireAuth>
+            <SinglePlayList />
           </RequireAuth>
         } />
         <Route path="login" element={<Login />} />
