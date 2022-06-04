@@ -3,11 +3,13 @@ import { Header, Login, SignUP } from "./components/index"
 import { Routes, Route } from "react-router-dom"
 import { Home, MainPage, ScreenPlay, History, NotFound, PlayList, LikedVideos, WatchLater } from "./pages/index"
 import RequireAuth from "./Authentication/requireAuth";
+import { ToastContainer } from 'react-toastify';
 
 
 function App() {
   return (
     <div className="App">
+      <ToastContainer />
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />

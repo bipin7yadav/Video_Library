@@ -25,6 +25,10 @@ export const videoSlice = createSlice({
         loading: false,
         search:"",
         filter:"",
+        watchLater:[],
+        likedVideos:[],
+        history:[],
+        
     },
     reducers: {
         addSearch: (state, action) => {
@@ -33,6 +37,25 @@ export const videoSlice = createSlice({
         addFilter: (state, action) => {
             state.filter = action.payload
         },
+        addWatch: (state, action) => {
+            state.watchLater = [...state.watchLater, { ...action.payload }]
+        },
+        addLike: (state, action) => {
+            state.likedVideos = [...state.likedVideos, { ...action.payload }]
+        },
+        addHistory: (state, action) => {
+            state.history = [...state.history, { ...action.payload }]
+        },
+        deleteLike: (state, action) => {
+            state.likedVideos = state.likedVideos.filter((a) => a.id !== action.payload.id)
+        },
+        deleteWatchLater: (state, action) => {
+            state.watchLater = state.watchLater.filter((a) => a.id !== action.payload.id)
+        },
+        deleteHistory: (state, action) => {
+            state.history = state.history.filter((a) => a.id !== action.payload.id)
+        }
+
 
     },
 
@@ -51,6 +74,6 @@ export const videoSlice = createSlice({
 })
 
 
-export const {addFilter, addSearch  } = videoSlice.actions
+export const {addFilter, addSearch , addWatch, addHistory , addLike ,deleteWatchLater,deleteHistory,deleteLike } = videoSlice.actions
 
 export default videoSlice.reducer
