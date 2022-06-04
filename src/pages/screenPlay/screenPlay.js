@@ -4,7 +4,10 @@ import { useParams } from 'react-router-dom';;
 import { Sidebar } from '../../components';
 import "./screenPlay.css"
 import { useSelector, useDispatch } from 'react-redux';
+import { addLike, addWatch ,addHistory , deleteLike ,deleteWatchLater} from '../videoSlice/VideoSlice';
 import {v4 as uuid} from "uuid"
+import {  toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const ScreenPlay = () => {
 
@@ -17,6 +20,32 @@ const ScreenPlay = () => {
 
     const post = data.find((a) => a.src === videoId)
 
+    const [Like,setLike]=useState(true)
+    const [watch,setWatch]=useState(true)
+    const [play,setPlay]=useState(true)
+
+    function like(post){
+        setLike(!Like)
+        if(Like){
+            toast.success("Video Liked")
+            dispatch(addLike(post))
+        }else{
+            toast.warning("video unliked")
+            dispatch(deleteLike(post))
+        }
+
+    }
+
+    function watchLater(post){
+        setWatch(!watch)
+        if(watch){
+            toast.success("added to watchLater")
+            dispatch(addWatch(post))
+        }else{
+            toast.warning("removed from watchLater")
+            dispatch(deleteWatchLater(post))
+        }
+    }
         
     
     return (
@@ -36,6 +65,7 @@ const ScreenPlay = () => {
                         width="100%"
                         height="100%"
                         controls={true}
+                        onPlay={()=>dispatch(addHistory(post))}
                     />
 
                 </div>
@@ -46,13 +76,13 @@ const ScreenPlay = () => {
                     <div>{post.description}</div>
                     <div className='simple-flex-row btn-gap'>
                         <div>
-                            <span class="material-icons icon"  >playlist_add_circle</span>
+                            <span className="material-icons icon" style={{color:play?"black":"blue"}}  >playlist_add_circle</span>
                         </div>
                         <div>
-                            <span class="material-icons icon"  >thumb_up</span>
+                            <span className="material-icons icon" style={{color:Like?"black":"blue"}} onClick={() => like(post)}>thumb_up</span>
                         </div>
                         <div>
-                            <span class="material-icons icon"  >watch_later</span>
+                            <span className="material-icons icon" style={{color:watch?"black":"blue"}} onClick={() => watchLater(post)}>watch_later</span>
                         </div>
                     </div>
 
