@@ -1,0 +1,21 @@
+
+.header{
+    background-color:navy;
+    color: white ;
+    padding: 8px 4px;
+    font-size: 20px;
+    height: 3.4rem;
+    z-index: 1;
+    top: 0;
+    /* position: -webkit-sticky; */
+    position: sticky;
+}
+
+.serchbarWidth{
+    width: 24rem;
+    padding: 8px;
+}
+
+.lN{
+    color: white;
+}
