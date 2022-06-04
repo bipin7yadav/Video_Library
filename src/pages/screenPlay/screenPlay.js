@@ -130,7 +130,7 @@ const ScreenPlay = () => {
                     <div>{post.description}</div>
                     <div className='simple-flex-row btn-gap'>
                         <div>
-                            <span className="material-icons icon" style={{color:play?"black":"blue"}} onClick={() => { playList(post) }} >playlist_add_circle</span>
+                            <span className="material-icons icon" style={{color:play?"black":"blue"}} onClick={() => playList(post) } >playlist_add_circle</span>
                         </div>
                         <div>
                             <span className="material-icons icon" style={{color:Like?"black":"blue"}} onClick={() => like(post)}>thumb_up</span>
