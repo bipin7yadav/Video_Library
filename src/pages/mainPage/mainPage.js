@@ -1,10 +1,9 @@
-import axios from 'axios';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Sidebar } from '../../components';
+import { addSearch, addFilter, addVideo, addHistory } from '../videoSlice/VideoSlice';
 import { getPosts } from '../videoSlice/VideoSlice';
-import { addFilter, addSearch } from '../videoSlice/VideoSlice';
 import "../../global.css"
 import "./mainPage.css"
 
@@ -14,9 +13,9 @@ const MainPage = () => {
 
 
     const dispatch = useDispatch()
-    const data = useSelector((state) => state.video.video)
     const bysearch = useSelector((state) => state.video.search)
     const byfilter = useSelector((state) => state.video.filter)
+    const data = useSelector((state) => state.video.video)
 
     const load = useSelector((state) => state.video.loading)
 
@@ -45,6 +44,7 @@ const MainPage = () => {
 
 
 
+
     return (
         <div className='flex-rowns margin'>
             <div className='sideBar'>
@@ -69,11 +69,11 @@ const MainPage = () => {
                         !load ?
                             filteredVideo().map((a) => {
                                 return (
-                                    <>
+                                    <div key={a.id}>
                                         <Link style={{ textDecoration: "none" }} to={`/video/${a.src}`}>
-                                            <div className='card' key={a.id}>
+                                            <div className='card' key={`${a.id}`}>
                                                 <div >
-                                                    <img className='thumbnail' alt='thumbnail' src={`http://img.youtube.com/vi/${a.src}/mqdefault.jpg`} />
+                                                    <img onClick={() => play(a)} className='thumbnail' alt='thumbnail' src={`http://img.youtube.com/vi/${a.src}/mqdefault.jpg`} />
                                                 </div>
                                                 <div className='flex-row'>
                                                     <div className='data'>
@@ -81,6 +81,7 @@ const MainPage = () => {
                                                         <div className='flex-row view'>
                                                             <div className='creator'>{a.creator}</div>
                                                             <div>{a.view} views</div>
+                                                            
                                                         </div>
                                                     </div>
                                                 </div>
@@ -88,7 +89,7 @@ const MainPage = () => {
                                             </div>
                                         </Link>
 
-                                    </>
+                                    </div>
                                 )
                             })
                             : <h2 className='msg'>Loading.......</h2>

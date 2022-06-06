@@ -2,8 +2,8 @@ import React from 'react';
 import "./home.css"
 import "../../global.css"
 import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
 import { addFilter } from '../videoSlice/VideoSlice';
+import { useDispatch } from 'react-redux';
 
 const Home = () => {
 
