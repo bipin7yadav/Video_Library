@@ -173,37 +173,6 @@ const ScreenPlay = () => {
                     })
                 }
 
-                {/* <div className='play'>
-
-                    <ReactPlayer
-                        // url={`https://youtu.be/${videoId}`}
-                        url={`https://www.youtube.com/embed/${videoId}`}
-                        className="react-player"
-                        width="100%"
-                        height="100%"
-                        controls={true}
-                        onPlay={() => historyHandler(post)}
-                    />
-
-                </div>
-                <div className='info'>
-
-                    <h3>{post.title}</h3>
-                    <h4>{post.creator}</h4>
-                    <div>{post.description}</div>
-                    <div className='simple-flex-row btn-gap'>
-                        <div>
-                            <span className="material-icons icon" style={{ color: play ? "black" : "blue" }} onClick={() => { playList(post) }}>playlist_add_circle</span>
-                        </div>
-                        <div>
-                            <span className="material-icons icon" style={{ color: Like ? "black" : "blue" }} onClick={() => like(post)}>thumb_up</span>
-                        </div>
-                        <div>
-                            <span className="material-icons icon" style={{ color: watch ? "black" : "blue" }} onClick={() => watchLater(post)}>watch_later</span>
-                        </div>
-                    </div>
-
-                </div> */}
             </div>
         </div>
     );
