@@ -2,7 +2,7 @@ import "./SinglePlayList.css"
 import "../../global.css"
 import { useParams, Link } from "react-router-dom";
 import React from 'react';
-import { useSelector} from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Sidebar } from "../../components";
 
 const SinglePlayList = () => {
@@ -25,7 +25,7 @@ const SinglePlayList = () => {
                     (show.list).length > 0 ?
                         show.list.map((item) => {
                             return (
-                                <>
+                                <div key={item.id}>
                                     <div className='card gap'>
                                         <div >
                                             <Link style={{ textDecoration: "none" }} to={`/video/${item.src}`}><img  className='thumbnail' src={`http://img.youtube.com/vi/${item.src}/mqdefault.jpg`} /></Link>
@@ -38,10 +38,9 @@ const SinglePlayList = () => {
                                                     <div>{item.view} views</div>
                                                 </div>
                                             </div>
-                                
                                         </div>
                                     </div>
-                                </>
+                                </div>
                             )
                         })
                         :<h2 className="msg">Playlist is empty !!</h2>

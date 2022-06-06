@@ -2,13 +2,12 @@ import React from 'react';
 import "./PlayList.css"
 import { Sidebar } from '../../components';
 import { useSelector, useDispatch } from 'react-redux';
-import { useState } from 'react';
 import { addPlayList, deletePlayListItem,add } from '../videoSlice/VideoSlice';
+import { useState } from 'react';
 import { v4 as uuid } from "uuid"
 import { Link } from 'react-router-dom';
 
 const PlayList = () => {
-
     const playlists = useSelector((state) => state.video.playList)
     const dispatch = useDispatch()
     const [nam, setNam] = useState("")
@@ -26,7 +25,6 @@ const PlayList = () => {
     }
 
     const [modal, setModal] = useState(true)
-   
     return (
         <>
             <div className='flex-rowns margin'>
@@ -37,7 +35,7 @@ const PlayList = () => {
                 </div>
 
                 <div className='mainContent'>
-                <div className='modal' style={{ display: modal ? "none" : "block" }}>
+                    <div className='modal' style={{ display: modal ? "none" : "block" }}>
                         <div className='content'>
                             <div>Add PlayList</div>
                             <div>
@@ -57,7 +55,7 @@ const PlayList = () => {
                             playlists.length > 0 ?
                                 playlists.map((a) => {
                                     return (
-                                        <>
+                                        <div key={a.id}>
                                             <div className='P-card'>
 
                                                 <div className='flex-row'>
@@ -71,7 +69,7 @@ const PlayList = () => {
                                                 </div>
                                             </div>
 
-                                        </>
+                                        </div>
                                     )
                                 })
                                 :

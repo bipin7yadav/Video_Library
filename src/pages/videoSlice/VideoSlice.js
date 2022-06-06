@@ -6,7 +6,7 @@ export const getPosts = createAsyncThunk(
     'video/getPosts',
     async () => {
         try {
-            const res = await axios.get("api/videos");
+            const res = await axios.get("/api/videos");
             const data = res.data.videos;
             return data
         } catch {
@@ -20,27 +20,30 @@ export const getPosts = createAsyncThunk(
 export const videoSlice = createSlice({
     name: "video",
     initialState: {
-        
+        key: '',
         video: [],
         loading: false,
-        search:"",
-        filter:"",
-        watchLater:[],
-        likedVideos:[],
-        history:[],
-        playList:[],
-        addList:{},
-        key:"",
-        playKey:""
-
-        
+        history: [],
+        search: "",
+        filter: "",
+        likedVideos: [],
+        watchLater: [],
+        playList: [],
+        addList: {},
+        playKey: ""
     },
     reducers: {
+        addHistory: (state, action) => {
+            state.history = [...state.history, { ...action.payload }]
+        },
         addSearch: (state, action) => {
             state.search = action.payload
         },
         addFilter: (state, action) => {
             state.filter = action.payload
+        },
+        addVideo: (state, action) => {
+            state.video = action.payload
         },
         addWatch: (state, action) => {
             state.watchLater = [...state.watchLater, { ...action.payload }]
@@ -48,23 +51,14 @@ export const videoSlice = createSlice({
         addLike: (state, action) => {
             state.likedVideos = [...state.likedVideos, { ...action.payload }]
         },
-        addHistory: (state, action) => {
-            state.history = [...state.history, { ...action.payload }]
-        },
-        deleteLike: (state, action) => {
-            state.likedVideos = state.likedVideos.filter((a) => a.id !== action.payload.id)
-        },
-        deleteWatchLater: (state, action) => {
-            state.watchLater = state.watchLater.filter((a) => a.id !== action.payload.id)
-        },
-        deleteHistory: (state, action) => {
-            state.history = state.history.filter((a) => a.id !== action.payload.id)
-        },
         addPlayList: (state, action) => {
             state.playList = [...state.playList, { ...action.payload }]
         },
         deletePlayListItem: (state, action) => {
             state.playList = state.playList.filter((a) => a.id !== action.payload.id)
+        },
+        addKey: (state, action) => {
+            state.key = action.payload
         },
         addplayItem: (state, action) => {
             state.playList.forEach(element => {
@@ -74,15 +68,18 @@ export const videoSlice = createSlice({
                 }
             });
         },
-        addKey:(state,action)=>{
-            state.key = action.payload
-        },
         add: (state, action) => {
             state.playKey = action.payload
         },
-
-        
-
+        deleteLike: (state, action) => {
+            state.likedVideos = state.likedVideos.filter((a) => a.id !== action.payload.id)
+        },
+        deleteWatchLater: (state, action) => {
+            state.watchLater = state.watchLater.filter((a) => a.id !== action.payload.id)
+        },
+        deleteHistory: (state, action) => {
+            state.history = state.history.filter((a) => a.id !== action.payload.id)
+        }
 
     },
 
@@ -101,7 +98,7 @@ export const videoSlice = createSlice({
 })
 
 
-export const {addFilter, addSearch , addWatch, addHistory , addLike ,deleteWatchLater,deleteHistory,deleteLike
-                ,addPlayList,deletePlayListItem,addplayItem,addKey ,add } = videoSlice.actions
+export const { screenPlay, addSearch, addFilter, addVideo, addHistory, addWatch, addLike, addPlayList, deletePlayListItem, addplayItem, addKey
+    , add, deleteLike, deleteWatchLater, deleteHistory } = videoSlice.actions
 
 export default videoSlice.reducer

@@ -1,6 +1,7 @@
 .player{
     height: 92.4vh;
     width: 84vw;
+    /* background-color: aqua; */
     box-sizing: border-box;
     text-align: start;
 }
@@ -25,6 +26,7 @@
 }
 
 .modals {
+    /* display: none; */
     position: fixed; 
     z-index: 1; 
     padding-top: 10%; 
@@ -37,6 +39,8 @@
     background-color: rgba(0,0,0,0.5); 
     opacity: 95%;
     display: flex;
+    /* justify-content: center;
+    align-items: center; */
   }
 
   .contents{
@@ -57,20 +61,20 @@
   }
 
   @media only screen and (max-width: 600px){
-    .player{
-        margin-top: 2rem;
-        height: 50vh;
-        width: 80vw;
-    }
-    .play{
-        width: 100%;
-    }
-    .info{
-        width: 100%;
-    }
+      .player{
+          margin-top: 2rem;
+          height: 50vh;
+          width: 80vw;
+      }
+      .play{
+          width: 100%;
+      }
+      .info{
+          width: 100%;
+      }
 
-    .modals{
-        padding-top: 40%;
-        padding-left: 28%;
-    }
-}
+      .modals{
+          padding-top: 40%;
+          padding-left: 28%;
+      }
+  }

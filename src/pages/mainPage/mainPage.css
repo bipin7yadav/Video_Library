@@ -39,6 +39,7 @@
 }
 .creator{
     background-color:rgb(210, 210, 248);
+    /* color: white; */
     font-family: 'Times New Roman', Times, serif;
     padding: 3px;
     border-radius: 4px;
