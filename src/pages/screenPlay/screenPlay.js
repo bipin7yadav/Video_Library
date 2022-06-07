@@ -94,7 +94,7 @@ const ScreenPlay = () => {
 
     function playList() {
         // setPlay(false)
-        setModal(false)
+        setModal(!modal)
     }
 
 
