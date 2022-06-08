@@ -99,10 +99,7 @@ const ScreenPlay = () => {
 
 
     return (
-        <div className='flex-rowns '>
-            <div className='sideBar'>
-                <Sidebar />
-            </div>
+        <>
             <div className='modals' style={{ display: modal ? "none" : "block" }} >
                 <div className='contents'>
                     <div>Add PlayList</div>
@@ -129,52 +126,58 @@ const ScreenPlay = () => {
                     </div>
                 </div>
             </div>
-            <div className='player align-center flex-column'>
+            <div className='flex-rowns margin '>
+                <div className='sideBar'>
+                    <Sidebar />
+                </div>
 
-                {
-                    data.map((a) => {
-                        if (a.src == videoId) {
-                            return (
-                                <>
-                                    <div className='play'>
+                <div className='player align-center flex-column'>
 
-                                        <ReactPlayer
-                                            // url={`https://youtu.be/${videoId}`}
-                                            url={`https://www.youtube.com/embed/${videoId}`}
-                                            className="react-player"
-                                            width="100%"
-                                            height="100%"
-                                            controls={true}
-                                            onPlay={() => historyHandler(post)}
-                                        />
+                    {
+                        data.map((a) => {
+                            if (a.src == videoId) {
+                                return (
+                                    <>
+                                        <div className='play'>
 
-                                    </div>
-                                    <div className='info'>
+                                            <ReactPlayer
+                                                // url={`https://youtu.be/${videoId}`} 
+                                                url={`https://www.youtube.com/embed/${videoId}`}
+                                                className="react-player"
+                                                width="100%"
+                                                height="100%"
+                                                controls={true}
+                                                onPlay={() => historyHandler(post)}
+                                            />
 
-                                        <h3>{a.title}</h3>
-                                        <h4>{a.creator}</h4>
-                                        <div>{a.description}</div>
-                                        <div className='simple-flex-row btn-gap'>
-                                            <div>
-                                                <span className="material-icons icon" style={{ color: play ? "black" : "blue" }} onClick={() => { playList(a) }}>playlist_add_circle</span>
-                                            </div>
-                                            <div>
-                                                <span className="material-icons icon" style={{ color: Like ? "black" : "blue" }} onClick={() => like(a)}>thumb_up</span>
-                                            </div>
-                                            <div>
-                                                <span className="material-icons icon" style={{ color: watch ? "black" : "blue" }} onClick={() => watchLater(a)}>watch_later</span>
-                                            </div>
                                         </div>
+                                        <div className='info'>
 
-                                    </div>
-                                </>
-                            )
-                        }
-                    })
-                }
+                                            <h3>{a.title}</h3>
+                                            <h4>{a.creator}</h4>
+                                            <div>{a.description}</div>
+                                            <div className='simple-flex-row btn-gap'>
+                                                <div>
+                                                    <span className="material-icons icon" style={{ color: play ? "black" : "blue" }} onClick={() => { playList(a) }}>playlist_add_circle</span>
+                                                </div>
+                                                <div>
+                                                    <span className="material-icons icon" style={{ color: Like ? "black" : "blue" }} onClick={() => like(a)}>thumb_up</span>
+                                                </div>
+                                                <div>
+                                                    <span className="material-icons icon" style={{ color: watch ? "black" : "blue" }} onClick={() => watchLater(a)}>watch_later</span>
+                                                </div>
+                                            </div>
 
+                                        </div>
+                                    </>
+                                )
+                            }
+                        })
+                    }
+
+                </div>
             </div>
-        </div>
+        </>
     );
 };
 
