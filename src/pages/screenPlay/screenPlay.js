@@ -100,7 +100,7 @@ const ScreenPlay = () => {
 
     return (
         <>
-            <div className='modals' style={{ display: modal ? "none" : "block" }} >
+            <div className='modals' style={{ visibility: modal ?  "visible": "hidden" }} >
                 <div className='contents'>
                     <div>Add PlayList</div>
                     <div>
