@@ -142,7 +142,7 @@ const ScreenPlay = () => {
 
                                             <ReactPlayer
                                                 // url={`https://youtu.be/${videoId}`} 
-                                                url={`https://www.youtube.com/embed/${videoId}`}
+                                                url={`https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1`}
                                                 className="react-player"
                                                 width="100%"
                                                 height="100%"
