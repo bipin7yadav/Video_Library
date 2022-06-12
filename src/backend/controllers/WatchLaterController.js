@@ -76,9 +76,11 @@ export const removeItemFromWatchLaterVideos = function (schema, request) {
   const user = requiresAuth.call(this, request);
   if (user) {
     const videoId = request.params.videoId;
+    console.log(videoId,"id");
     const filteredVideos = user.watchlater.filter(
-      (item) => item._id !== videoId
+      (item) => item.id !== videoId
     );
+    console.log(filteredVideos,"filter")
     this.db.users.update({ watchlater: filteredVideos });
     return new Response(200, {}, { watchlater: filteredVideos });
   }

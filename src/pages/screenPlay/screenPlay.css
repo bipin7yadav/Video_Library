@@ -1,6 +1,7 @@
 .player{
     height: 92.4vh;
     width: 84vw;
+    margin-left: 14rem;
     /* background-color: aqua; */
     box-sizing: border-box;
     text-align: start;
@@ -8,10 +9,13 @@
 
 .play{
     width: 70%;
+    margin-left: 5rem;
+    margin-top: 1rem;
     height: 70%;
 }
 
 .info{
+    margin-left: 4.5rem;
     box-sizing: border-box;
     padding: .5rem;
     width: 70%;
@@ -62,15 +66,17 @@
 
   @media only screen and (max-width: 600px){
       .player{
-          margin-top: 2rem;
+          margin-top: .1rem;
           height: 50vh;
           width: 80vw;
       }
       .play{
           width: 100%;
+          margin-left: .2rem;
       }
       .info{
           width: 100%;
+          margin-left: .001rem;
       }
 
       .modals{

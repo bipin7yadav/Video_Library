@@ -1,18 +1,32 @@
 import "./SinglePlayList.css"
 import "../../global.css"
 import { useParams, Link } from "react-router-dom";
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Sidebar } from "../../components";
+import { deletePlaylistVideo, getPlaylistVideo, playListGet } from "../Slices/featureSlice";
+
 
 const SinglePlayList = () => {
     const { playlistId } = useParams()
 
-    const list = useSelector((state) => state.video.playList);
-    
+    const dispatch = useDispatch()
 
-    const m= useSelector((state)=>state.video.playKey)
-    const show = list.find((a) => a.id == m)
+    const {playlist}=useSelector((state)=>state.features)
+    const [dependency,setDependency] = useState(false);
+
+    useEffect(()=>{
+        dispatch(playListGet())
+    },[dependency])
+
+
+    let mapPlaylist ={videos:[]}
+    if (playlist !== undefined){
+         mapPlaylist= playlist.find((elem)=>elem._id==playlistId)
+
+    }
+     console.log(playlistId,"id");
+
     return (
         <div className="flex-rowns margin">
             <div>
@@ -22,8 +36,8 @@ const SinglePlayList = () => {
             </div>
             <div className="items">
                 {
-                    (show.list).length > 0 ?
-                        show.list.map((item) => {
+                    mapPlaylist !== undefined  ?
+                    mapPlaylist.videos.map((item) => {
                             return (
                                 <div key={item.id}>
                                     <div className='card gap'>
@@ -38,6 +52,9 @@ const SinglePlayList = () => {
                                                     <div>{item.view} views</div>
                                                 </div>
                                             </div>
+                                            <div><span className="material-icons delete" onClick={() =>{
+                                                setDependency(!dependency)
+                                                dispatch(deletePlaylistVideo({mapPlaylist,item}))}} >delete</span></div>
                                         </div>
                                     </div>
                                 </div>

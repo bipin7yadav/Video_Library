@@ -1,28 +1,29 @@
-import React,{useEffect} from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import "../../global.css";
 import "./History.css"
 import { Sidebar } from '../../components';
 import { useSelector, useDispatch } from 'react-redux';
-import { deleteHistory , getPosts } from '../videoSlice/VideoSlice';
-import {  toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { clearHistory, HistoryGet, removeHistory } from '../Slices/featureSlice';
 
 
 const History = () => {
 
-    const historyData = useSelector((state) => state.video.history)
 
-    const data=useSelector((state)=>state.video.video)
 
-    const dispatch =useDispatch()
+    const dispatch = useDispatch()
 
-    useEffect(()=>{
-        dispatch(getPosts())
-    },[dispatch])
+    const { History } = useSelector(state => state.features)
 
-    function historyHandler(a){
+    useEffect(() => {
+        dispatch(HistoryGet())
+    }, [dispatch])
+
+    function historyHandler(a) {
         toast.success("history deleted")
+        dispatch(removeHistory(a))
         dispatch(deleteHistory(a))
     }
     return (
@@ -32,11 +33,14 @@ const History = () => {
             </div>
 
             <div className='mainContent'>
+                <div>
+                    <button className='btns' onClick={() => { dispatch(clearHistory()) }}>Clear History</button>
+                </div>
                 <div className='items' >
                     {
 
-                        historyData.length > 0 ?
-                            historyData.map((a) => {
+                        History.length > 0  ?
+                            History.map((a) => {
                                 return (
                                     <div key={a.id}>
                                         <div className='card flex-column' >
@@ -52,7 +56,7 @@ const History = () => {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div><span class="material-icons delete" onClick={()=>historyHandler(a)} >delete</span></div>
+                                            <div><span className="material-icons delete" onClick={() => historyHandler(a)} >delete</span></div>
                                         </div>
                                     </div>
                                 )

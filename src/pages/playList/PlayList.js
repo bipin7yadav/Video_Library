@@ -1,28 +1,33 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import "./PlayList.css"
 import { Sidebar } from '../../components';
 import { useSelector, useDispatch } from 'react-redux';
-import { addPlayList, deletePlayListItem,add } from '../videoSlice/VideoSlice';
 import { useState } from 'react';
-import { v4 as uuid } from "uuid"
 import { Link } from 'react-router-dom';
+import { deletePlaylist, playListGet ,playListPost} from '../Slices/featureSlice';
 
 const PlayList = () => {
     const playlists = useSelector((state) => state.video.playList)
+
     const dispatch = useDispatch()
     const [nam, setNam] = useState("")
 
-    const List = {
-        id: uuid(),
-        Name: nam,
-        list: []
+    const [desc, setDesc] = useState("")
+
+
+    function cringe() {
+        dispatch(playListPost({title:nam,description:desc}))
+        dispatch(playListGet())
+        setModal(true)
+        setNam("")
+        setDesc("")
     }
 
-    function playlistManagement() {
-        dispatch(addPlayList(List))
-        setNam("")
-        setModal(!modal)
-    }
+    useEffect(() => {
+        dispatch(playListGet())
+    }, [dispatch])
+
+    const { playlist } = useSelector(state => state.features)
 
     const [modal, setModal] = useState(true)
     return (
@@ -36,14 +41,18 @@ const PlayList = () => {
 
                 <div className='mainContent'>
                     <div className='modal' style={{ display: modal ? "none" : "block" }}>
-                        <div className='content'>
-                            <div>Add PlayList</div>
+                        <div className='contents'>
                             <div>
+                                <label>PlayList Name</label>
                                 <input className='inp' value={`${nam}`} onChange={(e) => setNam(e.target.value)} />
                             </div>
                             <div>
-                                <button className='btns' onClick={() => { setModal(!modal) }}>Cancel</button>
-                                <button className='btns' onClick={() => { playlistManagement() }}>Create</button>
+                                <label>Description</label>
+                                <input className='inp' value={`${desc}`} onChange={(e) => setDesc(e.target.value)} />
+                            </div>
+                            <div>
+                                <button className='btns' onClick={() => { setModal(true) }} >Cancel</button>
+                                <button className='btns' onClick={() => { cringe() }} >Create</button>
                             </div>
                         </div>
                     </div>
@@ -52,17 +61,17 @@ const PlayList = () => {
                     </div>
                     <div className='items'>
                         {
-                            playlists.length > 0 ?
-                                playlists.map((a) => {
+                            playlist.length > 0 ?
+                                playlist.map((a) => {
                                     return (
-                                        <div key={a.id}>
+                                        <div key={a._id}>
                                             <div className='P-card'>
 
                                                 <div className='flex-row'>
 
                                                     <div className='flex-row'  >
-                                                        <Link  to={`/playlist/:${a.id}`}><div onClick={()=>{dispatch(add(a.id))}}>{a.Name}</div></Link>
-                                                        <div><span class="material-icons btns" onClick={() => { dispatch(deletePlayListItem(a)) }}>delete</span></div>
+                                                        <Link to={`/playlist/${a._id}`}><div >{a.title}</div></Link>
+                                                        <div><span className="material-icons btns" onClick={() => { dispatch(deletePlaylist(a)) }}>delete</span></div>
                                                     </div>
 
 

@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Sidebar } from '../../components';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { deleteWatchLater } from '../videoSlice/VideoSlice';
 import {  toast } from 'react-toastify';
+import { deletedWatchLater, watchlaterGet } from '../Slices/featureSlice';
 
 const WatchLater = () => {
     const later = useSelector((state) => state.video.watchLater)
@@ -12,8 +12,14 @@ const WatchLater = () => {
 
     function watchLaterHandler(a){
         toast.success("deleted from watchList")
-        dispatch(deleteWatchLater(a))
+        dispatch(deletedWatchLater(a))
     }
+
+    const {watchLaterVideo}=useSelector(state=> state.features)
+
+    useEffect(()=>{
+        dispatch(watchlaterGet())
+    },[dispatch])
 
     return (
         <>
@@ -27,10 +33,10 @@ const WatchLater = () => {
                     <div className='items'>
                         
                         {
-                            later.length >0 ?
-                            later.map((a) => {
+                            watchLaterVideo.length >0  ?
+                            watchLaterVideo.map((a) => {
                                 return (
-                                    <>
+                                    <div key={a.id}>
                                         <div className='card'>
                                             <div >
                                                 <Link style={{ textDecoration: "none" }} to={`/video/${a.src}`}><img onClick={() => { play(a) }} className='thumbnail' src={`http://img.youtube.com/vi/${a.src}/mqdefault.jpg`} /></Link>
@@ -48,7 +54,7 @@ const WatchLater = () => {
                                             <div><span class="material-icons delete" onClick={()=>watchLaterHandler(a)} >delete</span></div>
                                         </div>
 
-                                    </>
+                                    </div>
                                 )
                             })
                             :<h2 className='msg'>No Vides In Watch Later</h2>

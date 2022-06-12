@@ -4,55 +4,45 @@ import { useParams } from 'react-router-dom';;
 import { Sidebar } from '../../components';
 import "./screenPlay.css"
 import { useSelector, useDispatch } from 'react-redux';
-import {
-    addLike, addWatch, addPlayList, addplayItem, addKey
-    , deleteLike, deleteWatchLater, addHistory, deleteHistory, getPosts
-} from '../videoSlice/VideoSlice';
-import { v4 as uuid } from "uuid"
+import { getPosts} from '../videoSlice/VideoSlice';
 import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+
+import {  HistoryPost, likePost, playListGet, playListPost, postPlaylistVideo, watchLaterPost } from '../Slices/featureSlice';
 
 const ScreenPlay = () => {
 
+    
+    const { videoId } = useParams();
     const data = useSelector((state) => state.video.video)
-
+    
 
     const dispatch = useDispatch()
-
+    const {playlist}= useSelector((state)=>state.features)
+    
     useEffect(() => {
         dispatch(getPosts())
     }, [dispatch])
 
-    const list = useSelector((state) => state.video.playList)
-
-
-    const { videoId } = useParams();
 
     const post = data.find((a) => a.src === videoId)
 
-    const allLike = useSelector((state) => state.video.likedVideos)
-    const checkWatchLater = useSelector((state) => state.video.watchLater)
 
     const [modal, setModal] = useState(true)
 
     const [nam, setNam] = useState("")
 
+    const [desc, setDesc] = useState("")
+
     function addtoPL(a) {
-        dispatch(addKey(a.id))
-        dispatch(addplayItem(post))
-        toast.success(`added to ${a.Name}`)
+        dispatch(postPlaylistVideo({a,post}))
+        toast.success(`added to ${a.title}`)
         setModal(true)
     }
-
-    const List = {
-        id: uuid(),
-        Name: nam,
-        list: []
-    }
     function cringe() {
-        dispatch(addPlayList(List))
+        dispatch(playListPost({title:nam,description:desc}))
+        dispatch(playListGet())
         setNam("")
-        // setModal(true)
+        setDesc("")
     }
 
     const [Like, setLike] = useState(true)
@@ -64,56 +54,42 @@ const ScreenPlay = () => {
 
     function like(post) {
         setLike(!Like)
-        if (Like) {
-            dispatch(deleteLike(post))
-            toast.success("Video Liked")
-            dispatch(addLike(post))
-        } else {
-            toast.warning("video unliked")
-            dispatch(deleteLike(post))
-        }
+        toast.success("Video Liked")
+        dispatch(likePost(post))
 
     }
 
     function watchLater(post) {
         setWatch(!watch)
-        if (watch) {
-            dispatch(deleteWatchLater(post))
-            toast.success("added to watchLater")
-            dispatch(addWatch(post))
-        } else {
-            toast.warning("removed from watchLater")
-            dispatch(deleteWatchLater(post))
-        }
-    }
-
-    function historyHandler(post) {
-        dispatch(deleteHistory(post))
-        dispatch(addHistory(post))
+        dispatch(watchLaterPost(post))
+        toast.success("added to watchLater")
     }
 
     function playList() {
-        // setPlay(false)
-        setModal(!modal)
+        setModal(false)
     }
 
 
     return (
         <>
-            <div className='modals' style={{ visibility: modal ? "hidden" :"visible" }} >
+            <div className='modals' style={{ display: modal ? "none" : "block" }} >
                 <div className='contents'>
-                    <div>Add PlayList</div>
                     <div>
+                        <label>PlayList Name</label>
                         <input className='inp' value={`${nam}`} onChange={(e) => setNam(e.target.value)} />
+                    </div>
+                    <div>
+                        <label>Description</label>
+                        <input className='inp' value={`${desc}`} onChange={(e) => setDesc(e.target.value)} />
                     </div>
                     <div className='map'>
                         {
-                            list.length > 0 ?
-                                list.map((a) => {
+                            playlist.length > 0 ?
+                                playlist.map((a) => {
                                     return (
-                                        <div key={`${a.id}`}>
-                                            <input type="checkbox" value={a.Name} onClick={() => { addtoPL(a) }} />
-                                            <label>{a.Name}</label>
+                                        <div key={`${a._id}`}>
+                                            <input type="checkbox" value={a.title} onClick={() => { addtoPL(a) }} />
+                                            <label>{a.title}</label>
                                         </div>
                                     )
                                 }) :
@@ -135,19 +111,18 @@ const ScreenPlay = () => {
 
                     {
                         data.map((a) => {
-                            if (a.src == videoId) {
+                            if (a.src === videoId) {
                                 return (
-                                    <>
+                                    <div key={a.id} className="player">
                                         <div className='play'>
 
                                             <ReactPlayer
-                                                // url={`https://youtu.be/${videoId}`} 
-                                                url={`https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1`}
+                                                url={`https://www.youtube-nocookie.com/embed/${a.src}?autoplay=1`}
                                                 className="react-player"
                                                 width="100%"
                                                 height="100%"
                                                 controls={true}
-                                                onPlay={() => historyHandler(post)}
+                                                onStart={() => dispatch(HistoryPost(a))}
                                             />
 
                                         </div>
@@ -169,7 +144,7 @@ const ScreenPlay = () => {
                                             </div>
 
                                         </div>
-                                    </>
+                                    </div>
                                 )
                             }
                         })

@@ -1,21 +1,23 @@
 import React from 'react';
-import { useState } from 'react';
 import "./auth.css"
 import "../../global.css"
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../Authentication/authContext';
+import { useDispatch, useSelector } from 'react-redux';
+import { loginHandler } from '../../pages/Slices/AuthSlice';
+
 
 const Login = () => {
-    const {login,setLogin}=useAuth();
-    const location=useLocation();
-    const navigate =useNavigate()
+    const dispatch = useDispatch()
+    const location = useLocation();
+    const navigate = useNavigate()
     return (
         <div className='flex-rowns'>
             <div>
                 <img className='img' src='/asset/Mobile login-bro.svg' />
             </div>
             <div>
-                <form className="loginForm" >
+                <div className="loginForm">
                     <div className="lContent" >
                         <div>
                             <h2>Login</h2>
@@ -29,15 +31,21 @@ const Login = () => {
                             <input type="password" className="inputs" />
                         </div>
                         <div>
-                            <button className="btnL">Login</button>
+                            <Link to="/Video">
+                            <button onClick={()=>{
+                                dispatch(loginHandler())
+                                navigate(location.state.from.pathname)
+                                }} className="btnL">Login</button>
+                            </Link>
                         </div>
                         <div>
-                            <Link to="/">
+                            <Link to="/Video">
                                 <button className="btnL"
-                                onClick={()=>{
-                                    setLogin(!login)
-                                    navigate(location.state.from.pathname)
-                                }}
+                                    onClick={() => {
+                                       
+                                        dispatch(loginHandler())
+                                        navigate(location.state.from.pathname)
+                                    }}
                                 >
                                     Login as Guest
                                 </button>
@@ -47,7 +55,7 @@ const Login = () => {
                             <p>Don't have an account <Link to="/signUp">Create One</Link> </p>
                         </div>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
     );
