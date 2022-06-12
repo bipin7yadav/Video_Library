@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { deleteLike, getPosts } from '../videoSlice/VideoSlice';
 import {  toast } from 'react-toastify';
+import { likeGet,deleteLiked } from '../Slices/featureSlice';
 
 const LikedVideos = () => {
 
@@ -13,9 +14,15 @@ const LikedVideos = () => {
     const likes = useSelector((state) => state.video.likedVideos)
     const dispatch =useDispatch()
 
+    const {LikedVideo}= useSelector(state=>state.features)
+
+    useEffect(()=>{
+        dispatch(likeGet())
+    },[dispatch])
+
     function likeHandler(a){
         toast.success("removed from liked videos ")
-        dispatch(deleteLike(a))
+        dispatch(deleteLiked(a))
     }
     return (
         <>
@@ -28,8 +35,8 @@ const LikedVideos = () => {
                 <div className='mainContent'>
                     <div className='items gap'>
                         {
-                            likes.length > 0 ?
-                                likes.map((a) => {
+                            LikedVideo.length>0  ?
+                                LikedVideo.map((a) => {
                                     return (
                                         <div key={a.id}>
                                             <div className='card gap'>
@@ -46,7 +53,7 @@ const LikedVideos = () => {
                                                     </div>
                                                     
                                                 </div>
-                                                <div><span class="material-icons delete" onClick={()=>likeHandler(a)}>delete</span></div>
+                                                <div><span className="material-icons delete" onClick={()=>likeHandler(a)}>delete</span></div>
                                             </div>
 
                                         </div>

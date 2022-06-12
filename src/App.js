@@ -1,12 +1,14 @@
 import "./App.css";
 import { Header, Login, SignUP } from "./components/index"
 import { Routes, Route } from "react-router-dom"
-import { Home, MainPage, ScreenPlay, History, NotFound, PlayList, LikedVideos, WatchLater , SinglePlayList } from "./pages/index"
+import { Home, MainPage, ScreenPlay, History, NotFound, PlayList, LikedVideos, WatchLater, SinglePlayList } from "./pages/index"
 import RequireAuth from "./Authentication/requireAuth";
 import { ToastContainer } from 'react-toastify';
-
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
+
+  
   return (
     <div className="App">
       <ToastContainer />
@@ -51,7 +53,7 @@ function App() {
           </RequireAuth>
         } />
         <Route path="login" element={<Login />} />
-        <Route path="signUp" element={<SignUP />} />
+        <Route path="signUp" element={<SignUP />} /> 
       </Routes>
 
     </div>

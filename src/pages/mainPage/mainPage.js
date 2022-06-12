@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Sidebar } from '../../components';
-import { addSearch, addFilter, addVideo, addHistory } from '../videoSlice/VideoSlice';
+import { addSearch, addFilter } from '../videoSlice/VideoSlice';
 import { getPosts } from '../videoSlice/VideoSlice';
 import "../../global.css"
 import "./mainPage.css"
