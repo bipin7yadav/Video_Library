@@ -1,5 +1,5 @@
 import "./App.css";
-import { Header, Login, SignUP } from "./components/index"
+import { Header, Login, SignUP ,Logout} from "./components/index"
 import { Routes, Route } from "react-router-dom"
 import { Home, MainPage, ScreenPlay, History, NotFound, PlayList, LikedVideos, WatchLater, SinglePlayList } from "./pages/index"
 import RequireAuth from "./Authentication/requireAuth";
@@ -53,7 +53,9 @@ function App() {
           </RequireAuth>
         } />
         <Route path="login" element={<Login />} />
-        <Route path="signUp" element={<SignUP />} /> 
+        <Route path="signUp" element={<SignUP />} />
+        <Route path="logout" element={ <Logout/> }/> 
+
       </Routes>
 
     </div>

@@ -1,5 +1,7 @@
 import axios from "axios";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { toast } from "react-toastify";
+
 
 const initialState = {
     status: true,
@@ -23,7 +25,13 @@ export const loginHandler = createAsyncThunk("login/loginHandler",async()=>{
 const login = createSlice({
     name:"login",
     initialState,
-    reducers:{},
+    reducers:{
+        logoutHandler :(state,{payload})=>{
+            localStorage.removeItem("authToken")
+            state.status = true
+            toast.info("Successfully logout")
+        }
+    },
     extraReducers:{
         [loginHandler.pending]:state=>{
             state.status = true;
@@ -31,6 +39,7 @@ const login = createSlice({
         [loginHandler.fulfilled]:(state,{payload}) =>{
             state.status=false;
             state.token = payload.encodedToken;
+            toast.info("Login Successfull")
         },
         [loginHandler.rejected]:state=>{
             state.status = false;
@@ -38,6 +47,8 @@ const login = createSlice({
 
     }
 })
+
+export const  {logoutHandler} = login.actions
 
 export default login.reducer;
 
