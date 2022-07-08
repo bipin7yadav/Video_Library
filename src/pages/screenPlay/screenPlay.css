@@ -1,10 +1,14 @@
-.player{
+/* .player{
     height: 92.4vh;
     width: 84vw;
     margin-left: 14rem;
-    /* background-color: aqua; */
+    background-color: aqua;
     box-sizing: border-box;
     text-align: start;
+} */
+
+.playing{
+    margin-left: 21rem;
 }
 
 .play{
@@ -30,7 +34,6 @@
 }
 
 .modals {
-    /* display: none; */
     position: fixed; 
     z-index: 1; 
     padding-top: 10%; 
@@ -43,8 +46,6 @@
     background-color: rgba(0,0,0,0.5); 
     opacity: 1;
     display: flex;
-    /* justify-content: center;
-    align-items: center; */
   }
 
   .contents{
@@ -84,3 +85,58 @@
           padding-left: 28%;
       }
   }
+
+  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 2) {
+
+    .player {
+        margin-top: .1rem;
+        height: 50vh;
+        width: 70vw;
+        /* background-color: aqua; */
+    }
+
+    .play {
+        width: 100%;
+        margin-left: -9rem;
+    }
+
+    .info {
+        width: 100%;
+        margin-left: -9rem;
+    }
+
+    .modals {
+        position: fixed;
+        z-index: 1;
+        padding-top: 30%;
+        padding-left: 30%;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.5);
+        opacity: 1;
+        display: flex;
+    }
+
+    .inp{
+        width: 100%;
+        height: 2.4rem;
+    }
+
+    .contents {
+        border: 1px solid black;
+        background-color: white;
+        color: black;
+        width: 70%;
+        padding: 2rem;
+        height: max-content;
+        gap: 5px;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+    }
+    
+
+}

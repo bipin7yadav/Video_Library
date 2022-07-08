@@ -69,4 +69,35 @@
       }
   }
 
+  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 2){
+    .modal{
+        position: fixed;
+        z-index: 1;
+        padding-top: 30%;
+        padding-left: 30%;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.5);
+        opacity: 1;
+        display: flex;
+    }
+
+    .inp{
+        width: 100%;
+        height: 2.4rem;
+    }
+
+    .P-card{
+        width: 30rem;
+        margin-left: 2rem;
+        margin-top: 1rem;
+    }
+    
+
+}
+
+
   

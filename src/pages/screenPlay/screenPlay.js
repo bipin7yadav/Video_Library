@@ -107,13 +107,13 @@ const ScreenPlay = () => {
                     <Sidebar />
                 </div>
 
-                <div className='player align-center flex-column'>
+                <div className='playing align-center flex-column'>
 
                     {
                         data.map((a) => {
                             if (a.src === videoId) {
                                 return (
-                                    <div key={a.id} className="player">
+                                    <div key={a.id} >
                                         <div className='play'>
 
                                             <ReactPlayer
