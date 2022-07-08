@@ -9,7 +9,7 @@ const SignUP = () => {
             <div>
                 <img className='img' src='/asset/Mobile login-bro.svg' />
             </div>
-            <div>
+            <div className='centre'>
                 <form className="loginForm" >
                     <div className="scontent" >
                         <div>

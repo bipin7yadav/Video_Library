@@ -16,7 +16,7 @@ const Login = () => {
             <div>
                 <img className='img' src='/asset/Mobile login-bro.svg' />
             </div>
-            <div>
+            <div className='centre'>
                 <div className="loginForm">
                     <div className="lContent" >
                         <div>
