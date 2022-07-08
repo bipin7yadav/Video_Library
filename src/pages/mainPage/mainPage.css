@@ -68,3 +68,18 @@
         height:18rem;
     }
 }
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 2){
+    .card{
+        position: relative;
+        width: 30rem;
+        height: 22rem;
+        cursor: pointer;
+        box-shadow: 0 4px 8px 0 rgba(27, 43, 170, 0.2);
+    }
+    .mainContent{
+        width: 81.4vw;
+        left: 0;
+        padding: 4.5rem;
+    }
+}
