@@ -1,10 +1,12 @@
 import React, { useEffect } from 'react';
 import "./PlayList.css"
+import "../../global.css"
 import { Sidebar } from '../../components';
 import { useSelector, useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { deletePlaylist, playListGet ,playListPost} from '../Slices/featureSlice';
+import { toast } from 'react-toastify';
 
 const PlayList = () => {
     const playlists = useSelector((state) => state.video.playList)
@@ -16,9 +18,20 @@ const PlayList = () => {
 
 
     function cringe() {
-        dispatch(playListPost({title:nam,description:desc}))
+        let k=playlist.reduce((a,c)=>{
+            return [...a,c.title]
+        },[])
+        
+        if(nam!="" ){
+            if(!k.includes(nam) ){
+                dispatch(playListPost({title:nam,description:desc}))
+            }else{
+                toast.info("already exists")
+            }
+        }else{
+            toast.info("Enter Valid Name")
+        }
         dispatch(playListGet())
-        setModal(true)
         setNam("")
         setDesc("")
     }
@@ -50,9 +63,9 @@ const PlayList = () => {
                                 <label>Description</label>
                                 <input className='inp' value={`${desc}`} onChange={(e) => setDesc(e.target.value)} />
                             </div>
-                            <div>
-                                <button className='btns' onClick={() => { setModal(true) }} >Cancel</button>
-                                <button className='btns' onClick={() => { cringe() }} >Create</button>
+                            <div className='flex-row'>
+                                <button className='play-btn' onClick={() => { setModal(true) }} >Cancel</button>
+                                <button className='play-btn' onClick={() => { cringe() }} >Create</button>
                             </div>
                         </div>
                     </div>

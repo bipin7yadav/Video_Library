@@ -3,11 +3,13 @@ import ReactPlayer from 'react-player';
 import { useParams } from 'react-router-dom';;
 import { Sidebar } from '../../components';
 import "./screenPlay.css"
+import "../../global.css"
 import { useSelector, useDispatch } from 'react-redux';
 import { getPosts} from '../videoSlice/VideoSlice';
 import { toast } from 'react-toastify';
 
 import {  HistoryPost, likePost, playListGet, playListPost, postPlaylistVideo, watchLaterPost } from '../Slices/featureSlice';
+import { current } from '@reduxjs/toolkit';
 
 const ScreenPlay = () => {
 
@@ -39,7 +41,19 @@ const ScreenPlay = () => {
         setModal(true)
     }
     function cringe() {
-        dispatch(playListPost({title:nam,description:desc}))
+        let k=playlist.reduce((a,c)=>{
+            return [...a,c.title]
+        },[])
+        
+        if(nam!="" ){
+            if(!k.includes(nam) ){
+                dispatch(playListPost({title:nam,description:desc}))
+            }else{
+                toast.info("already exists")
+            }
+        }else{
+            toast.info("Enter Valid Name")
+        }
         dispatch(playListGet())
         setNam("")
         setDesc("")
@@ -96,9 +110,9 @@ const ScreenPlay = () => {
                                 <span></span>
                         }
                     </div>
-                    <div>
-                        <button className='btns' onClick={() => { setModal(true) }} >Cancel</button>
-                        <button className='btns' onClick={() => { cringe() }} >Create</button>
+                    <div className='flex-row'>
+                        <button className='play-btn' onClick={() => { setModal(true) }} >Cancel</button>
+                        <button className='play-btn' onClick={() => { cringe() }} >Create</button>
                     </div>
                 </div>
             </div>
@@ -107,7 +121,7 @@ const ScreenPlay = () => {
                     <Sidebar />
                 </div>
 
-                <div className='playing align-center flex-column'>
+                <div className='playing  flex-column'>
 
                     {
                         data.map((a) => {

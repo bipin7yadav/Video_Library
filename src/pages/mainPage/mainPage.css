@@ -8,11 +8,16 @@
 }
 
 .card{
+    box-sizing: border-box;
     position: relative;
-    width: 18rem;
+    width: 17rem;
     height: 16rem;
     cursor: pointer;
     box-shadow: 0 4px 8px 0 rgba(27, 43, 170, 0.2);
+    margin-left: 1rem;
+}
+.card:hover{
+    box-shadow: inset;
 }
 
 .thumbnail:hover{
@@ -35,11 +40,11 @@
 .view{
     position: absolute;
     bottom: 0;
-    margin:4px 0px
+    margin:4px 0px;
+    padding: 4px;
 }
 .creator{
     background-color:rgb(210, 210, 248);
-    /* color: white; */
     font-family: 'Times New Roman', Times, serif;
     padding: 3px;
     border-radius: 4px;

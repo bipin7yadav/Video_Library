@@ -33,6 +33,7 @@ const SinglePlayList = () => {
                     <Sidebar />
                 </div>
             </div>
+
             <div className="mainContent">
                 <div className="items">
                     {
