@@ -24,7 +24,6 @@
     padding: .7rem;
 }
 .lContent{
-    /* background-color: aqua; */
     border: 1px solid black;
     height: 60%;
     box-sizing: border-box;
@@ -48,8 +47,21 @@
 
 .inputs{
     padding: .3rem;
-    width: 96%;
+    width: 100%;
     border-radius: 1rem;
+}
+
+@media only screen and (max-width: 600px){
+    .img{
+        display: none;
+    }
+
+    .centre{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
 }
 
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 2){
@@ -64,3 +76,4 @@
         width: 100%;
     }
 }
+

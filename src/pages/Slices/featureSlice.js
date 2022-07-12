@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const initialState = {
     statue: true,
@@ -38,7 +39,6 @@ export const deleteLiked = createAsyncThunk("feature/deleteLike",
                 }
             })
             const data = res.data.likes;
-            console.log(data, "dtat")
             return data
         } catch (error) {
             console.log(error.msg);
@@ -60,7 +60,7 @@ export const likeGet = createAsyncThunk("features/likeGet",
             const data = res.data.likes;
             return data
         } catch (error) {
-            console.log(error.msg)
+            console.log(error)
         }
     })
 
@@ -99,7 +99,7 @@ export const watchlaterGet = createAsyncThunk("features/watchLaterGet",
             const data = res.data.watchlater;
             return data
         } catch (error) {
-            console.log(error.msg)
+            console.log(error)
         }
     })
 
@@ -115,7 +115,7 @@ export const deletedWatchLater = createAsyncThunk("feature/deletedWatchLater",
             const data = res.data.watchlater;
             return data
         } catch (error) {
-            console.log(error.msg);
+            console.log(error);
         }
     }
 )
@@ -242,6 +242,7 @@ export const deletePlaylist = createAsyncThunk("feature/deletePlaylist",
                     authorization: localStorage.getItem("authToken")
                 }
             })
+            toast.info("playlist deleted")
             const data = res.data.playlists;
             return data
         } catch (error) {
@@ -268,7 +269,7 @@ export const getPlaylistVideo = createAsyncThunk("features/getPlaylistVideo",
             const data = res.data.playlists;
             return data
         } catch (error) {
-            console.log(error.msg)
+            console.log(error)
         }
     })
 
@@ -290,8 +291,6 @@ export const postPlaylistVideo = createAsyncThunk("feature/postPlaylistVideo",
 
 export const deletePlaylistVideo = createAsyncThunk("feature/deletePlaylistVideo",
     async ({mapPlaylist,item}) => {
-        console.log(mapPlaylist,"plid")
-        console.log(item,"src");
         try {
             const res = await axios.delete(`/api/user/playlists/${mapPlaylist._id}/${item.src}`, {
                 headers: {
@@ -299,7 +298,7 @@ export const deletePlaylistVideo = createAsyncThunk("feature/deletePlaylistVideo
                 }
             })
             const data = res.data.playlists;
-            console.log(res,"deltee____________pppp")
+            toast.info("video deleted")
             return data
         } catch (error) {
             console.log(error.msg);
@@ -473,7 +472,6 @@ const featureSlice = createSlice({
         },
         [playListGet.fulfilled]: (state, { payload }) => {
             state.status = false;
-            console.log(payload,"====");
             state.playlist = payload.playlists;
         },
         [playListGet.pending]: (state) => {

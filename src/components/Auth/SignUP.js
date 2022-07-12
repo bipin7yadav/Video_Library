@@ -28,7 +28,7 @@ const SignUP = () => {
                             <input type="password" className="inputs" />
                         </div>
                         <div className="inp">
-                            <label>Set Password*</label>
+                            <label>Confirm Password*</label>
                             <input type="password" className="inputs" />
                         </div>
 

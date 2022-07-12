@@ -155,7 +155,8 @@ export const videos = [
     src: "6L-PAmZajfA",
     title: "CSS FlexBox in 30 Minutes in Hindi 2022",
     creator: "Thapa Technical",
-    description: " Welcome, all we will see CSS FlexBox tutorial in Hindi in One video. CSS3  FlexBox in Hindi in 30 Minutes in 2022."
+    description: " Welcome, all we will see CSS FlexBox tutorial in Hindi in One video. CSS3  FlexBox in Hindi in 30 Minutes in 2022.",
+    view:"441k"
   },
 
   {
@@ -163,7 +164,8 @@ export const videos = [
     src: "z7lkDctYqq8",
     title: "Create Website Layout with CSS Flexbox - I in Hindi/Urdu",
     creator: "Yahoo Baba",
-    description: " In this tutorial you will learn how to create a website layout with CSS flexbox.You can also learn new CSS3 properties related to 'Display flex' like flex-basis, align-items, justify-content , flex-direction, flex practically to make a basic webpage."
+    description: " In this tutorial you will learn how to create a website layout with CSS flexbox.You can also learn new CSS3 properties related to 'Display flex' like flex-basis, align-items, justify-content , flex-direction, flex practically to make a basic webpage.",
+    view:"397k"
   },
 
   {
@@ -171,7 +173,8 @@ export const videos = [
     src: "1WjyIZ3YIBo",
     title: "Complete CSS GRID Tutorial In ONE VIDEO In HINDI 2019",
     creator: "Thapa Technical",
-    description: " Welcome, to Complete CSS GRID Tutorial In ONE VIDEO In HINDI 2019. CSS3 Grid System in Hindi. "
+    description: " Welcome, to Complete CSS GRID Tutorial In ONE VIDEO In HINDI 2019. CSS3 Grid System in Hindi. ",
+    view:"400k"
   },
 
   {
@@ -179,7 +182,8 @@ export const videos = [
     src: "qz0aGYrrlhU",
     title: "HTML Tutorial for Beginners: HTML Crash Course",
     creator: "Programming with Mosh",
-    description: "HTML Tutorial for Beginners - Learn HTML for a career in web development. This HTML tutorial teaches you everything you need to get started."
+    description: "HTML Tutorial for Beginners - Learn HTML for a career in web development. This HTML tutorial teaches you everything you need to get started.",
+    view:"7M"
   },
 
   {
@@ -187,7 +191,8 @@ export const videos = [
     src: "9FPAdxhYZIc",
     title: "O Meri Zohrajabeen Lyrical Video Song | Phir Hera Pheri",
     creator: "Bollywood Classics",
-    description: " Presenting 'O Meri Zohrajabeen' Lyrical Video in the voice of Himesh Reshammiya from Hindi movie 'Phir Hera Pheri' starring Akshay Kumar, Sunil Shetty, Paresh Rawal, Bipasa Basu, Johny Lever, Rajpal Yadav on T-Series Classics."
+    description: " Presenting 'O Meri Zohrajabeen' Lyrical Video in the voice of Himesh Reshammiya from Hindi movie 'Phir Hera Pheri' starring Akshay Kumar, Sunil Shetty, Paresh Rawal, Bipasa Basu, Johny Lever, Rajpal Yadav on T-Series Classics.",
+    view:"48k"
   },
 
   {
@@ -195,14 +200,16 @@ export const videos = [
     src: "3f8tFtcuIkI",
     title: "Mujhko Yaad Sataye Teri Lyrical Video Song | Phir Hera Pheri",
     creator: "Bollywood Classics",
-    description: "Presenting 'Mujhko Yaad Sataye Teri' Lyrical Video in the voice of Himesh Reshammiya from Hindi movie 'Phir Hera Pheri' starring Akshay Kumar, Rimi Sen on T-Series Classics."
+    description: "Presenting 'Mujhko Yaad Sataye Teri' Lyrical Video in the voice of Himesh Reshammiya from Hindi movie 'Phir Hera Pheri' starring Akshay Kumar, Rimi Sen on T-Series Classics.",
+    view:"198M"
   },
   {
     id:uuid(),
     src:"QpxWE_a9tnA",
     title:"The World is F*cked - Abhijit Chavda Geopolitics Update ",
     creator:"BeerBiceps",
-    description:"Today BeerBiceps is the home for The Ranveer Show or TRS - India's smartest podcast. A show where we host the country's greatest success stories and try digging out their secrets to success. "
+    description:"Today BeerBiceps is the home for The Ranveer Show or TRS - India's smartest podcast. A show where we host the country's greatest success stories and try digging out their secrets to success. ",
+    view:"7M"
 
   },
   {
@@ -210,7 +217,8 @@ export const videos = [
     src:"oZH70U5t55M",
     title:"Real TRUTH Behind Mahabharata, Ramayana & Spaceships ft. Dr. Vineet",
     creator:"BeerBiceps",
-    description:"Today BeerBiceps is the home for The Ranveer Show or TRS - India's smartest podcast. A show where we host the country's greatest success stories and try digging out their secrets to success. "
+    description:"Today BeerBiceps is the home for The Ranveer Show or TRS - India's smartest podcast. A show where we host the country's greatest success stories and try digging out their secrets to success. ",
+    view:"4.7M"
 
   }
 ];
