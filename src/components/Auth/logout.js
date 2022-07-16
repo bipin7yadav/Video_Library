@@ -5,6 +5,8 @@ import {logoutHandler} from "../../pages/Slices/AuthSlice"
 
 const Logout = () => {
     const dispatch = useDispatch()
+    const {user,email}=useSelector((store)=>store.login)
+    console.log(user,email,"user logout")
     return (
         <div>
 
@@ -14,14 +16,14 @@ const Logout = () => {
                         <h3>Aadarsh Balika</h3>
                     </div>
                     <div>
-                        Thank You Aadarsh for being an active user of our Video Library App . 
+                        Thank You <span>{user}</span> for being an active user of our Video Library App . 
                         I hope you are enjoying our content and we assure you that we will keep posting 
                         such content which you enjoy.
                     </div>
                     <div>
                         <Link to="/login">
                             <button className="btnL" onClick={()=>{dispatch(logoutHandler())}}>
-                                Log Out 
+                                Log Out
                             </button>
                         </Link>
                     </div>

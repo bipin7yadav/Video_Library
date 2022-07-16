@@ -39,7 +39,7 @@ const History = () => {
                 <div className='items' >
                     {
 
-                        History.length > 0  ?
+                        History !==undefined ? History.length  ?
                             History.map((a) => {
                                 return (
                                     <div key={a.id}>
@@ -61,6 +61,7 @@ const History = () => {
                                     </div>
                                 )
                             })
+                            : <h2 className='msg'>Your History Is Empty</h2>
                             : <h2 className='msg'>Your History Is Empty</h2>
                     }
                 </div>

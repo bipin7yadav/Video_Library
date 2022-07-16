@@ -9,7 +9,6 @@ import { getPosts} from '../videoSlice/VideoSlice';
 import { toast } from 'react-toastify';
 
 import {  HistoryPost, likePost, playListGet, playListPost, postPlaylistVideo, watchLaterPost } from '../Slices/featureSlice';
-import { current } from '@reduxjs/toolkit';
 
 const ScreenPlay = () => {
 
@@ -136,6 +135,7 @@ const ScreenPlay = () => {
                                                 width="100%"
                                                 height="100%"
                                                 controls={true}
+                                                playing
                                                 onStart={() => dispatch(HistoryPost(a))}
                                             />
 

@@ -11,7 +11,7 @@ function App() {
   
   return (
     <div className="App">
-      <ToastContainer />
+      <ToastContainer className="toaster" />
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
