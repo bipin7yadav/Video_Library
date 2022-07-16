@@ -35,7 +35,7 @@ const LikedVideos = () => {
                 <div className='mainContent'>
                     <div className='items gap'>
                         {
-                            LikedVideo.length>0  ?
+                            LikedVideo !==undefined ? LikedVideo.length  ?
                                 LikedVideo.map((a) => {
                                     return (
                                         <div key={a.id}>
@@ -59,6 +59,7 @@ const LikedVideos = () => {
                                         </div>
                                     )
                                 })
+                                : <h2 className='msg'>No Liked Videos</h2>
                                 : <h2 className='msg'>No Liked Videos</h2>
                         }
                     </div>

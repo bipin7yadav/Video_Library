@@ -74,7 +74,7 @@ const PlayList = () => {
                     </div>
                     <div className='items'>
                         {
-                            playlist.length > 0 ?
+                            playlist !==undefined ? playlist.length ?
                                 playlist.map((a) => {
                                     return (
                                         <div key={a._id}>
@@ -94,6 +94,7 @@ const PlayList = () => {
                                         </div>
                                     )
                                 })
+                                : <h2 className='msg'>No Liked Videos</h2>
                                 :
                                 <h2 className='msg'>Make Your Own Playlist</h2>
                         }
