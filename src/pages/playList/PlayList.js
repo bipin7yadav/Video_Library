@@ -77,7 +77,31 @@ const PlayList = () => {
                             playlist !==undefined ? playlist.length ?
                                 playlist.map((a) => {
                                     return (
-                                        <div key={a._id}>
+                                        <>
+                                        {a.videos.length>0?
+                                            <div key={a._id} style={{boxSizing:"border-box"}}>
+                                        {console.log("a:",a)}
+                                            <div className='P-card' 
+                                            style={{backgroundImage:`url(http://img.youtube.com/vi/${a.videos[0].src}/mqdefault.jpg)`,
+                                            objectFit:"contain",backgroundSize:"contain"
+                                        }}
+                                            >
+
+                                                <div className='flex-row'>
+
+                                                    <div className='flex-row'  >
+                                                        <Link to={`/playlist/${a._id}`}><div >{a.title}</div></Link>
+                                                        <div><span className="material-icons btns" onClick={() => { dispatch(deletePlaylist(a)) }}>delete</span></div>
+                                                    </div>
+
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        :
+                                        <div key={a._id} style={{objectFit:"contain"}}>
+                                        {console.log("a:",a)}
                                             <div className='P-card'>
 
                                                 <div className='flex-row'>
@@ -92,7 +116,8 @@ const PlayList = () => {
                                             </div>
 
                                         </div>
-                                    )
+                                }
+                                        </>)
                                 })
                                 : <h2 className='msg'>No Liked Videos</h2>
                                 :
