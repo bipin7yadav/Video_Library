@@ -33,6 +33,7 @@ const LikedVideos = () => {
                     </div>
                 </div>
                 <div className='mainContent'>
+                    <div className='cardBlock'>
                     <div className='items gap'>
                         {
                             LikedVideo !==undefined ? LikedVideo.length  ?
@@ -62,6 +63,8 @@ const LikedVideos = () => {
                                 : <h2 className='msg'>No Liked Videos</h2>
                                 : <h2 className='msg'>No Liked Videos</h2>
                         }
+                    </div>
+
                     </div>
                 </div>
             </div>

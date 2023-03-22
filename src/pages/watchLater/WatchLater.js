@@ -30,6 +30,7 @@ const WatchLater = () => {
                     </div>
                 </div>
                 <div className='mainContent'>
+                    <div className='cardBlock'>
                     <div className='items'>
 
                         {
@@ -60,6 +61,8 @@ const WatchLater = () => {
                         :<h2 className='msg'>No Vides In Watch Later</h2>
                         :<h2 className='msg'>No Vides In Watch Later</h2>
                         }
+
+                    </div>
 
                     </div>
                 </div>

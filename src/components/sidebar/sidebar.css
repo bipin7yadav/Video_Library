@@ -12,7 +12,8 @@
     height: 50%;
     border-radius: 5px;
     padding: .7rem;
-    margin-left: 4px;
+    margin-left: .7rem;
+    width: 13rem;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 
@@ -36,9 +37,12 @@ a:-webkit-any-link {
     gap: 1.6rem;
 }
 
-@media only screen and (max-width: 600px){
+@media only screen and (max-width: 1287px){
     .mob{
         display: none;
+    }
+    .sidebar{
+        width: max-content;
     }
 }
 
