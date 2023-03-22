@@ -69,6 +69,7 @@ const PlayList = () => {
                             </div>
                         </div>
                     </div>
+                    <div className='cardBlock'>
                     <div>
                         <button className='btns' onClick={() => { setModal(false) }}>Create Playlist</button>
                     </div>
@@ -121,6 +122,8 @@ const PlayList = () => {
                                 :
                                 <h2 className='msg'>Make Your Own Playlist</h2>
                         }
+                    </div>
+
                     </div>
                 </div>
             </div>

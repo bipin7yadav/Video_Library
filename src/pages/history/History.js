@@ -33,6 +33,7 @@ const History = () => {
             </div>
 
             <div className='mainContent'>
+                <div className='cardBlock'>
                 <div>
                     <button className='btns' onClick={() => { dispatch(clearHistory()) }}>Clear History</button>
                 </div>
@@ -64,6 +65,8 @@ const History = () => {
                             : <h2 className='msg'>Your History Is Empty</h2>
                             : <h2 className='msg'>Your History Is Empty</h2>
                     }
+                </div>
+
                 </div>
             </div>
         </div>
