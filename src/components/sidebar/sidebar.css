@@ -8,6 +8,12 @@
     text-align: start;
     text-decoration: none;
     position: fixed;
+    background-color: rgb(203, 225, 245);
+    height: 50%;
+    border-radius: 5px;
+    padding: .7rem;
+    margin-left: 4px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 
 .active{
@@ -33,5 +39,20 @@ a:-webkit-any-link {
 @media only screen and (max-width: 600px){
     .mob{
         display: none;
+    }
+}
+
+@media only screen and (max-width: 850px){
+    .sidebar{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 17rem;
+        margin-top: 2rem;
+        padding-left: 4px;
+        text-align: start;
+        text-decoration: none;
+        position: fixed;
+        font-size: 12px;
     }
 }

@@ -39,7 +39,8 @@
 }
 .logo{
     font-size: 35px;
-    color: white;
+    /* color: white; */
+    color:navy
 }
 
 
@@ -61,4 +62,9 @@
 
 .msg{
     width: 100%;
+}
+
+.deleteIcon{
+    background-color: white;
+    border-radius: 50%;
 }

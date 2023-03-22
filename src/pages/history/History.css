@@ -2,7 +2,10 @@
     color: red;
     position: absolute;
     top: 0;
-    right: 0;
+    right: 0;margin: 4px;
+    padding: 3px;
+    background-color: white;
+    border-radius: 50%;
 }
 
 .btns{
