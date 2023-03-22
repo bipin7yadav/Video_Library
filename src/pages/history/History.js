@@ -56,7 +56,7 @@ const History = () => {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div><span className="material-icons delete" onClick={() => historyHandler(a)} >delete</span></div>
+                                            <div className='deleteIcon'><span className="material-icons delete" onClick={() => historyHandler(a)} >delete</span></div>
                                         </div>
                                     </div>
                                 )

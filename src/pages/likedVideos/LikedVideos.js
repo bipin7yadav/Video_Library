@@ -53,7 +53,7 @@ const LikedVideos = () => {
                                                     </div>
                                                     
                                                 </div>
-                                                <div><span className="material-icons delete" onClick={()=>likeHandler(a)}>delete</span></div>
+                                                <div className='deleteIcon'><span className="material-icons delete" onClick={()=>likeHandler(a)}>delete</span></div>
                                             </div>
 
                                         </div>
