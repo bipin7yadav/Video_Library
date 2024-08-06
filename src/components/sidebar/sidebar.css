@@ -22,10 +22,12 @@
     background-color: blue;
     padding: 3px;
     border-radius: 5px;
+    display:flex
 }
 
 .inactive{
     color: blue;
+    display: flex;
 }
 
 a:-webkit-any-link {
